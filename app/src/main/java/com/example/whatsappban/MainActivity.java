@@ -1,12 +1,11 @@
 package com.example.whatsappban;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -20,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         etTargetNumber = findViewById(R.id.etTargetNumber);
         tvStatus = findViewById(R.id.tvStatus);
+
         Button btnBan = findViewById(R.id.btnBan);
         Button btnCheck = findViewById(R.id.btnCheck);
 
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         btnBan.setOnClickListener(v -> {
-            String number = etTargetNumber.getText().toString();
+            String number = etTargetNumber.getText().toString().trim();
             if (number.isEmpty()) {
                 Toast.makeText(this, "Entrez un numéro", Toast.LENGTH_SHORT).show();
                 return;
@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         btnCheck.setOnClickListener(v -> {
-            String number = etTargetNumber.getText().toString();
+            String number = etTargetNumber.getText().toString().trim();
             if (number.isEmpty()) {
                 Toast.makeText(this, "Entrez un numéro", Toast.LENGTH_SHORT).show();
                 return;

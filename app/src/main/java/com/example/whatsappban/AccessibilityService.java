@@ -2,14 +2,15 @@ package com.example.whatsappban;
 
 import android.accessibilityservice.AccessibilityService;
 import android.accessibilityservice.GestureDescription;
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Path;
 import android.graphics.Rect;
 import android.view.accessibility.AccessibilityEvent;
 import android.view.accessibility.AccessibilityNodeInfo;
-import android.content.Context;
-import android.content.Intent;
-import java.util.Random;
+
 import java.util.List;
+import java.util.Random;
 
 public class WhatsAppAccessibilityService extends AccessibilityService {
     private static final Random random = new Random();
@@ -166,7 +167,7 @@ public class WhatsAppAccessibilityService extends AccessibilityService {
         if (focused != null) {
             focused.performAction(AccessibilityNodeInfo.ACTION_FOCUS);
             for (char c : text.toCharArray()) {
-                // Intentionally left for a future keyboard injection implementation.
+                // Keyboard injection is intentionally left for a future implementation.
             }
         }
     }
