@@ -3,18 +3,26 @@ plugins {
 }
 
 android {
-    compileSdk 33
+    namespace 'com.example.whatsappban'
+    compileSdk 34
+
     defaultConfig {
-        applicationId "com.example.whatsappban"
+        applicationId 'com.example.whatsappban'
         minSdk 21
-        targetSdk 33
+        targetSdk 34
         versionCode 1
-        versionName "1.0"
+        versionName '1.0'
     }
+
     buildTypes {
         release {
             minifyEnabled false
         }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
 }
 
