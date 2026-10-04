@@ -2,11 +2,11 @@ package com.example.whatsappban;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
         Button btnBan = findViewById(R.id.btnBan);
         Button btnCheck = findViewById(R.id.btnCheck);
 
-        // Vérifier si le service d'accessibilité est activé
-        if (!AccessibilityService.isServiceEnabled(this)) {
+        if (!WhatsAppAccessibilityService.isServiceEnabled(this)) {
             tvStatus.setText("Activez le service dans Paramètres > Accessibilité !");
         }
 
@@ -34,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Entrez un numéro", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Lancer le processus de ban
-            AccessibilityService.startBanProcess(this, number);
+            WhatsAppAccessibilityService.startBanProcess(this, number);
         });
 
         btnCheck.setOnClickListener(v -> {
@@ -44,8 +42,7 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(this, "Entrez un numéro", Toast.LENGTH_SHORT).show();
                 return;
             }
-            // Lancer le processus de check
-            AccessibilityService.checkBanStatus(this, number);
+            WhatsAppAccessibilityService.checkBanStatus(this, number);
         });
     }
-  }
+}
