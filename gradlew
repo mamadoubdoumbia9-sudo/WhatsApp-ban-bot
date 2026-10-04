@@ -38,8 +38,7 @@ done
 SAVED="$(cd "$(dirname "$PRG")" >/dev/null 2>&1 && pwd)"
 cd "$SAVED" >/dev/null 2>&1 || exit 1
 
-APP_HOME=$(expr "$(pwd)" : '\(.*\)/')`
-[ -z "$APP_HOME" ] && APP_HOME="$(pwd)"
+APP_HOME=$(pwd)
 export APP_HOME
 
 # Add default JVM options here. You can also use JAVA_OPTS and GRADLE_OPTS to pass JVM options to this script.
@@ -83,9 +82,9 @@ CLASSPATH=$APP_HOME/gradle/wrapper/gradle-wrapper.jar
 
 # Determine the Java command to use to start the JVM.
 if [ -n "$JAVA_HOME" ] ; then
-    if [ -x "$JAVA_HOME/jre/bin/java" ] ; then
+    if [ -x "$JAVA_HOME/bin/java" ] ; then
         # IBM's JDK on AIX uses strange locations for the executables
-        JAVACMD="$JAVA_HOME/jre/bin/java"
+        JAVACMD="$JAVA_HOME/bin/java"
     else
         JAVACMD="$JAVA_HOME/bin/java"
     fi
@@ -127,11 +126,8 @@ fi
 
 # For Cygwin or MSYS, switch paths to Windows format before running java
 if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
-    APP_HOME=$(expr "$(pwd)" : '\(.*\)/')`
-    [ -z "$APP_HOME" ] && APP_HOME="$(pwd)"
     APP_HOME=$(echo "$APP_HOME" | sed 's|\\|/|g')
     CLASSPATH=$(echo "$CLASSPATH" | sed 's|\\|/|g')
-
     JAVACMD=$(echo "$JAVACMD" | sed 's|\\|/|g')
 
     # Now convert the arguments - kludge to limit ourselves to /bin/sh
@@ -139,7 +135,7 @@ if [ "$cygwin" = "true" -o "$msys" = "true" ] ; then
     for arg in "$@" ; do
         CHECK=$(echo "$arg"|egrep -c '^-')                                 # Count of all args that start with -
         CHECK2=$(echo "$arg"|egrep -c '^-[^-]')                            # Count of all args that start with exactly one -
-            if [ $CHECK -eq 1 -a $CHECK2 -eq 0 ] ; then                 # if it is a single dash followed by something that is not another dash then
+        if [ $CHECK -eq 1 -a $CHECK2 -eq 0 ] ; then                 # if it is a single dash followed by something that is not another dash then
             i=$(($i+1))
         fi
     done
