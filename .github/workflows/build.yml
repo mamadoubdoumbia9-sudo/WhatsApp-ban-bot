@@ -21,8 +21,9 @@ jobs:
       - name: Build Release APK
         run: ./gradlew assembleRelease
 
+      # CORRECTION ICI : Passage de v3 à v4
       - name: Upload APK
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: whatsapp-ban-apk
           path: app/build/outputs/apk/release/*.apk
